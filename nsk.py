@@ -3,6 +3,7 @@ import argparse
 import modules.pingsweep as ps
 import modules.traceroute as tr
 import modules.portscan as ports
+import modules.googleIt as gi
 
 def pingsweep(args):
     ps.pingsweep(args.ip)  
@@ -12,6 +13,10 @@ def traceroute(args):
 
 def portscan(args):
     ports.portscan(args.host)
+
+def googleit(args):
+    gi.googleit(args.googleit)
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(prog = "Network Survival Kit", description = "Command line netwok toolkit")
@@ -36,6 +41,10 @@ if __name__ == "__main__":
     parser_portscan.add_argument("host", nargs = 1, help = "Target host to scan")
     # parser_portscan.add_argument("ports", nargs = 1, help = "Target ports to scan")
     parser_portscan.set_defaults(func = portscan)
+
+    parser_googleit = subparsers.add_parser("googleit", help = "Google it?")
+    parser_googleit.add_argument("googleit", nargs = "*", default = "lol", help = "Time to google it")
+    parser_googleit.set_defaults(func = googleit)
 
     args = parser.parse_args()
     args.func(args)
