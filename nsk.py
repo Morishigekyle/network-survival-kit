@@ -43,7 +43,7 @@ if __name__ == "__main__":
     parser_portscan.set_defaults(func = portscan)
 
     parser_googleit = subparsers.add_parser("googleit", help = "Google it?")
-    parser_googleit.add_argument("googleit", nargs = "*", default = "lol", help = "Time to google it")
+    parser_googleit.add_argument("googleit", nargs = "*", default = "lol", help = "Time to google it! Default is random word")
     parser_googleit.set_defaults(func = googleit)
 
     args = parser.parse_args()
